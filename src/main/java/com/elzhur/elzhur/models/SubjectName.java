@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -12,11 +14,16 @@ public class SubjectName {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @OneToOne(mappedBy = "subjectNameId")
-    Subject subject;
+    @OneToMany(mappedBy = "subjectName")
+    List<Subject> subject;
 
     String name;
 
     //TODO Сделать учителей
     String teacher;
+
+    public SubjectName(String name, String teacher) {
+        this.name = name;
+        this.teacher = teacher;
+    }
 }

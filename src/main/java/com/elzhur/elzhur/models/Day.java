@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,5 +22,11 @@ public class Day {
     @OneToMany(mappedBy = "day")
     List<Subject> subjects;
 
+    @Column(nullable = false)
+    Date date;
 
+    public Day(Week week, Date date) {
+        this.week = week;
+        this.date = date;
+    }
 }

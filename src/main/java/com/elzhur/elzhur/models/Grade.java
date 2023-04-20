@@ -4,18 +4,22 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    long id;
 
-    char grade;
+    String name;
 
-    short weight;
+    @OneToMany(mappedBy = "grade")
+    List<Subject> subjects;
 
-    @OneToOne(mappedBy = "grade")
-    Subject subject;
+    public Grade(String name) {
+        this.name = name;
+    }
 }

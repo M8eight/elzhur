@@ -1,6 +1,7 @@
 package com.elzhur.elzhur.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,11 +17,11 @@ public class Subject {
     @JoinColumn(name = "day_id", nullable = false)
     Day day;
 
-    @OneToOne
-    @JoinColumn(name = "subject_name_id", referencedColumnName = "id")
-    SubjectName subjectNameId;
+    @ManyToOne
+    @JoinColumn(name = "subject_name_id", referencedColumnName = "id", nullable = false)
+    SubjectName subjectName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "grade_id", referencedColumnName = "id")
     Grade grade;
 
@@ -35,5 +36,13 @@ public class Subject {
     String start_time;
 
     String end_time;
+
+    public Subject(Day day, SubjectName subjectName, SchoolClass schoolClass, String start_time, String end_time) {
+        this.day = day;
+        this.subjectName = subjectName;
+        this.schoolClass = schoolClass;
+        this.start_time = start_time;
+        this.end_time = end_time;
+    }
 }
 

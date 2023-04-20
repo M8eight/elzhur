@@ -18,4 +18,8 @@ public class SchoolClass {
 
     @OneToMany(mappedBy = "schoolClass")
     List<Subject> subjects;
+
+    public SchoolClass(String classname) {
+        this.classname = classname;
+    }
 }

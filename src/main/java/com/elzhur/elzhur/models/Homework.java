@@ -15,8 +15,12 @@ public class Homework {
     String text;
 
     //TODO Сделать приклепление файлов
-    String filepath;
 
     @OneToOne(mappedBy = "homework")
     Subject subject;
+
+    public Homework(String text, Subject subject) {
+        this.text = text;
+        this.subject = subject;
+    }
 }

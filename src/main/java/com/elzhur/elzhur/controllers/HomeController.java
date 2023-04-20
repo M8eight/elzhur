@@ -9,11 +9,4 @@ public class HomeController {
     String homeGet() {
         return "home";
     }
-
-    @GetMapping("/diary")
-    String diaryGet() {
-        return "diary";
-    }
-
-
 }
